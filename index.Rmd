@@ -2,8 +2,12 @@
 title: "A3: SPL Library Checkouts"
 output: html_document
 ---
+```{r}
+jg_df <- read.csv("John_Green_Checkouts.csv", stringsAsFactors = FALSE)
+```
 
 ### Introduction
+Using the Seattle Public Library data, I filtered the checkout data to only checkouts of books by author John Green. I chose this author because he was a popular author when I was younger, and so I wanted to understand how popular his books have been recently. Throughout this assignment, I will be analyzing the trends of the most checked out books overtime, how the number of John Green's books published correlates to the number of his books checked out, and how the popularity of the genres of John Green's books overtime. (add why!!!)
 
 An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
 

@@ -7,9 +7,15 @@ jg_df <- read.csv("John_Green_Checkouts.csv", stringsAsFactors = FALSE)
 ```
 
 ### Introduction
-Using the Seattle Public Library data, I filtered the checkout data to only checkouts of books by author John Green. I chose this author because he was a popular author when I was younger, and so I wanted to understand how popular his books have been recently. Throughout this assignment, I will be analyzing the trends of the most checked out books overtime, how the number of John Green's books published correlates to the number of his books checked out, and how the popularity of the genres of John Green's books overtime. (add why!!!)
+Using the Seattle Public Library data, I chose to analyze the books by John Green that were checked out in Seattle. I chose this author because he was very popular when I was younger, and I wanted to understand how popular his books have been recently. I was also curious about whether certain factors related to the level of popularity of his books. This leads me to my main research question:
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+- *How popular has John Green's books been from 2006 to 2022?*
+
+In order to do so, I will focus on the **checkout year**, **number of checkouts**, **subjects of the book**, **publication year**, and **publishing company** when calculating summary statistics and creating data visualizations. I will use these variables to analyze the following trends:
+
+- *How have the most checked out books written by John Green changed overtime?*
+- *How does the number of John Green's books that were published correlate to the number of John Green's books that were checked out overtime?*
+- *How has the popularity of John Green's books's genres changed overtime?*
 
 ### Summary Information
 

@@ -15,7 +15,7 @@ In order to do so, I will focus on the **checkout year**, **number of checkouts*
 
 - *How have the most checked out books written by John Green changed overtime?*
 - *How does the number of John Green's books that were published correlate to the number of John Green's books that were checked out overtime?*
-- *How has the popularity of John Green's books's genres changed overtime?*
+- *How has the popularity of John Green's books' genres changed overtime?*
 
 ### Summary Information
 

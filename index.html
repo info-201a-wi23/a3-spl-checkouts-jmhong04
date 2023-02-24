@@ -401,21 +401,108 @@ John Green’s book checkouts were checked out as an EBOOK.</p>
 </div>
 <div id="the-dataset" class="section level3">
 <h3>The Dataset</h3>
+<blockquote>
+<p>Who collected/published the data?</p>
+</blockquote>
 <ul>
-<li>Who collected/published the data?<br />
-</li>
-<li>What are the parameters of the data (dates, number of checkouts,
-kinds of books, etc.)?</li>
-<li>How was the data collected or generated?<br />
-</li>
-<li>Why was the data collected?<br />
-</li>
-<li>What, if any, ethical questions do you need to consider when working
-with this data?<br />
-</li>
-<li>What are possible limitations or problems with this data? (at least
-200 words)</li>
+<li>The Seattle Public Library created and published the data. (My
+custom dataframe uses this data, but it is filtered to only include
+entries whose creator matches “John Green”.)</li>
 </ul>
+<blockquote>
+<p>What are the parameters of the data (dates, number of checkouts,
+kinds of books, etc.)?</p>
+</blockquote>
+<ul>
+<li>The parameters of the data are listed below:
+<ul>
+<li>UsageClass (whether a check out was digital or physical)</li>
+<li>CheckoutType (the vendor tool used for the check out)</li>
+<li>MaterialType (the medium of the check out)</li>
+<li>CheckoutYear</li>
+<li>CheckoutMonth<br />
+</li>
+<li>Checkouts (number of check outs of the item) -Title (of the item
+check out) -ISBN</li>
+<li>Creator</li>
+<li>Subjects (genres of the item)</li>
+<li>Publisher</li>
+<li>PublicationYear</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>How was the data collected or generated?</p>
+</blockquote>
+<ul>
+<li>The digital check out data was collected through the Seattle Public
+Library’s vendors (who are Overdrive, hoopla, Freegal, and RBDigital).
+Data on physical check outs was collected from the Legrady artwork data
+archives from 2005 to 2016 and from the Horizon ILS since 2016.</li>
+</ul>
+<blockquote>
+<p>Why was the data collected?</p>
+</blockquote>
+<ul>
+<li>According to Seattle’s Open Data website, data is published by the
+city’s departments and put into their Open Data program. This Open Data
+program was created to make data collected by Seattle to be easily
+accessible to the public. They wanted the availability of the data to
+increase Seattle’s quality of life and promote a supportive and
+beneficial community to its residents that is constantly finding ways to
+self-improve.</li>
+</ul>
+<blockquote>
+<p>What, if any, ethical questions do you need to consider when working
+with this data?</p>
+</blockquote>
+<ul>
+<li>One ethical question to consider is how the Seattle Public Library
+alerted its users that their data was being collected. Although the data
+remains anonymous, users of the library may not be comfortable with
+their check out information being collected as the items’ subjects can
+read into the users’ personal interests or political beliefs.
+Considering how many websites force a user to accept their terms and
+conditions in order to use the website, the library may follow a similar
+policy for users to check out items. This means that for users who
+require the use of the library’s items, they would be forced into having
+their data being collected.</li>
+</ul>
+<blockquote>
+<p>What are possible limitations or problems with this data?</p>
+</blockquote>
+<ul>
+<li><p>One limitation of the data is that it does not record renewal
+check outs and only records the initial check out. This means that the
+data is likely to have underestimated the number of total check outs per
+month as it is common for users to extend their time limit.</p></li>
+<li><p>Another problem of the data is that it is messy due to its
+variation in sources. The different sources used by the data means that
+information may have been collected using different methods or different
+types of data were collected. For example, the source for the physical
+check outs changed during 2016, so some entries have blank fields
+meaning the data is inconsistent depending on what time frame is being
+viewed. Furthermore, the original dataset is messy as some of the
+entries use unreadable characters which may have resulted when the data
+was transferred from archives or media vendors. The format of the
+entries also differs (such as when looking at the Publication Year
+column) which can make filtering for a certain data value
+difficult.</p></li>
+<li><p>A third problem relates to the Subjects column. The subject of
+each entry is a string of subjects. This means that each subject entry
+does not pertain to one unique subject. For example, when looking at the
+subjects for the book titled “An Abundance of Katherines” and comparing
+it to “Paper Towns”, the entire subject entry itself is different.
+However, it is only after actually reading each subject that we are able
+to find that both books share Young Adult Fiction as a subject.</p></li>
+<li><p>Lastly, in my filtered dataset, the creator is filtered to “John
+Green”, but this doesn’t mean that all creators are the same person.
+This means that creators who share the same name are included in this
+dataset, so I need to further clean the data to only include items
+created by the American author John Green.</p></li>
+</ul>
+<p>THINGS TO THINK ABOUT WHEN USING DATA: - Subjects, need to use string
+detect - Title - format not same - Not all same John Green - The dataset
+is each item checked out per month, so repeated titles</p>
 </div>
 <div id="first-trends-over-time-chart" class="section level3">
 <h3>First Trends Over Time Chart</h3>

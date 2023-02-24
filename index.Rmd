@@ -24,13 +24,53 @@ In order to assess John Green's popularity throughout the years and factors that
 
 ### The Dataset
 
-- Who collected/published the data?  
-- What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
-- How was the data collected or generated?  
-- Why was the data collected?  
-- What, if any, ethical questions do you need to consider when working with this data?  
-- What are possible limitations or problems with this data?   (at least 200 words)
+> Who collected/published the data?  
 
+- The Seattle Public Library created and published the data. (My custom dataframe uses this data, but it is filtered to only include entries whose creator matches "John Green".)
+  
+> What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
+
+- The parameters of the data are listed below:
+  - UsageClass (whether a check out was digital or physical)
+  - CheckoutType (the vendor tool used for the check out)
+  - MaterialType (the medium of the check out)
+  - CheckoutYear
+  - CheckoutMonth    
+  - Checkouts (number of check outs of the item)
+  -Title (of the item check out)
+  -ISBN
+  - Creator
+  - Subjects (genres of the item)
+  - Publisher
+  - PublicationYear
+  
+> How was the data collected or generated?  
+
+- The digital check out data was collected through the Seattle Public Library's vendors (who are Overdrive, hoopla, Freegal, and RBDigital). Data on physical check outs was collected from the Legrady artwork data archives from 2005 to 2016 and from the Horizon ILS since 2016.
+
+> Why was the data collected?  
+
+- According to Seattle's Open Data website, data is published by the city's departments and put into their Open Data program. This Open Data program was created to make data collected by Seattle to be easily accessible to the public. They wanted the availability of the data to increase Seattle's quality of life and promote a supportive and beneficial community to its residents that is constantly finding ways to self-improve.
+
+> What, if any, ethical questions do you need to consider when working with this data? 
+
+- One ethical question to consider is how the Seattle Public Library alerted its users that their data was being collected. Although the data remains anonymous, users of the library may not be comfortable with their check out information being collected as the items' subjects can read into the users' personal interests or political beliefs. Considering how many websites force a user to accept their terms and conditions in order to use the website, the library may follow a similar policy for users to check out items. This means that for users who require the use of the library's items, they would be forced into having their data being collected.
+
+> What are possible limitations or problems with this data?
+
+- One limitation of the data is that it does not record renewal check outs and only records the initial check out. This means that the data is likely to have underestimated the number of total check outs per month as it is common for users to extend their time limit. 
+
+- Another problem of the data is that it is messy due to its variation in sources. The different sources used by the data means that information may have been collected using different methods or different types of data were collected. For example, the source for the physical check outs changed during 2016, so some entries have blank fields meaning the data is inconsistent depending on what time frame is being viewed. Furthermore, the original dataset is messy as some of the entries use unreadable characters which may have resulted when the data was transferred from archives or media vendors. The format of the entries also differs (such as when looking at the Publication Year column) which can make filtering for a certain data value difficult. 
+
+- A third problem relates to the Subjects column. The subject of each entry is a string of subjects. This means that each subject entry does not pertain to one unique subject. For example, when looking at the subjects for the book titled "An Abundance of Katherines" and comparing it to "Paper Towns", the entire subject entry itself is different. However, it is only after actually reading each subject that we are able to find that both books share Young Adult Fiction as a subject. 
+
+- Lastly, in my filtered dataset, the creator is filtered to "John Green", but this doesn't mean that all creators are the same person. This means that creators who share the same name are included in this dataset, so I need to further clean the data to only include items created by the American author John Green. 
+
+THINGS TO THINK ABOUT WHEN USING DATA:
+- Subjects, need to use string detect
+- Title - format not same
+- Not all same John Green
+- The dataset is each item checked out per month, so repeated titles
 
 ### First Trends Over Time Chart
 

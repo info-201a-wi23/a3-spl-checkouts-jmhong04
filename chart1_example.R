@@ -1,6 +1,27 @@
-x_values <- seq(1, 3)
-y_values <- seq(1,3)
-
+# load the libraries and dataframe
 library(ggplot2)
-ggplot() +
-  geom_line(aes(x=x_values, y = y_values))
+library(tidyverse)
+library(openintro)
+
+jg_df <- read.csv("John_Green_Checkouts.csv", stringsAsFactors = FALSE)
+
+# create a variable of only Ebooks with English titles
+engl_titles <- c("An Abundance of Katherines", "Let It Snow: Three Holiday Romances", "Looking for Alaska", "Paper Towns", "The Anthropocene Reviewed: Essays on a Human-Centered Planet", "The Fault in Our Stars", "Turtles All the Way Down", "Will Grayson, Will Grayson")
+
+# create new dataframe and filter Title to English titles
+jgdf_chart1 <- jg_df %>%
+  filter(Title %in% engl_titles)
+
+# create line plot of Year v.
+ggplot(data = jgdf_chart1) +
+  geom_line(mapping = aes(
+    x = CheckoutYear,
+    y = Checkouts,
+    color = Title
+  )) +
+  labs(
+    title = "Number of Checkouts Overtime for John Green's Ebooks (English versions)",
+    x = "Year Ebook was Checked Out",
+    y = "Number of Checkouts",
+    color = "Title of Ebook"
+  )

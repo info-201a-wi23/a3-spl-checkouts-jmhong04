@@ -9,10 +9,11 @@ jg_df <- read.csv("John_Green_Checkouts.csv", stringsAsFactors = FALSE)
 ### Introduction
 Using the Seattle Public Library data, I chose to analyze the books by John Green that were checked out in Seattle. I chose this author because he was very popular when I was younger, and I wanted to understand how popular his books have been recently. I was also curious about whether certain factors related to the level of popularity of his books. This leads me to my main research question:
 
-- *How popular has John Green's books been from 2006 to 2022?*
+- *How popular has John Green's books been from 2007 to 2023?*
 
 In order to do so, I will focus on the **Checkouts**, **Title**, **Subjects**, **CheckoutYear**, **CheckoutMonth**, **Publisher**, and **MaterialType** when calculating summary statistics. In addition to these variables, I will also be using the **Publisher Year** when creating data visualizations to analyze the following trends:
 
+MAY NEED TO FIX THESE!!!! :
 - *How have the most checked out books written by John Green changed overtime?*
 - *How does the number of John Green's books that were published correlate to the number of John Green's books that were checked out overtime?*
 - *How has the popularity of John Green's books' genres changed overtime?*
@@ -20,7 +21,13 @@ In order to do so, I will focus on the **Checkouts**, **Title**, **Subjects**, *
 ### Summary Information
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("summary.R")}
 ```
-In order to assess John Green's popularity throughout the years and factors that may be associated with his popularity, I calculated summary statistics that use the variables specified above. First, I found that the book written by John Green with the most number of checkouts in Seattle from 2006 to 2022 was `r book_most_checkouts`. This helps me understand John Green's most popular book. Then, I calculated the most popular genre that John Green writes for by calculating the number of checkouts per genre. The genre with the most checkouts is `r genre_most_checkouts`. Regarding the time period when John Green's books were most popular, I calculated the month and year when the most John Green books were checked out, which is `r date_most_checkouts`. As for the publishing company, I found that the most checkouts of books written by John Green were published by `r publish_cmpny_most_checkout`. Finally, most of John Green's book checkouts were checked out as an `r most_medium`.
+In order to assess John Green's popularity throughout the years and factors that may be associated with his popularity, I calculated summary statistics that use the variables specified in the introduction. First, I wanted to know which piece of work written by John Green was the most popular, which I found by pulling the title of the item with the most amount of checkouts. I found that the title of the item written by John Green with the most number of checkouts in Seattle from 2007 to 2023 was `r item_most_checkouts`. I purposefully did not combine items with the same title written in a format because these differences in format are due to differences in the item's language, material type, or publisher which can potentially impact how often an item is checked out. (For instance, John Green's book called "An Abundance of Katherines" can also be found in the dataframe under the title "An Abundance of Katherines (Unabridged)", "El teorema Katherine: An Abundance of Katherines", or "El teorema Katherine". These differences occurred because the material type is an audiobook instead of an ebook, written in Spanish, or published by a different company.) 
+
+Then, I wanted to understand if other factors impacted John Green's popularity in the Seattle Public Library. I did so by calculating how often an item was checked out based on factors such as the subjects of the book, the date of the check out, the publishing company, and the medium of the item. First, I found the genres of the item that was most checked out by calculating the number of checkouts per unique group of subjects. The item with the most checkouts has the following group of subjects: `r subjects_most_checkouts`. 
+
+Regarding the time period when John Green's books were most popular, I calculated the month and year when the most John Green books were checked out to be `r date_most_checkouts`. To see if annual holidays or events impacted the popularity of John Green's books, I calculated the month (regardless of year) with the most amount of checkouts. I found this month to be `r month_highest_checkouts`.
+
+As for the publishing company, I found that the most checkouts of books written by John Green were published by `r publish_cmpny_most_checkouts`. Finally, John Green's book checkouts were least checked out as an `r medium_least_checkouts`.
 
 ### The Dataset
 

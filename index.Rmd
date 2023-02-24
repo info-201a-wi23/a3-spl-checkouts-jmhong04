@@ -33,45 +33,47 @@ As for the publishing company, I found that the most checkouts of books written 
 
 > Who collected/published the data?  
 
-- The Seattle Public Library created and published the data. (My custom dataframe uses this data, but it is filtered to only include entries whose creator matches "John Green".)
+- The Seattle Public Library created and published the data. (My custom dataframe uses this data, but it is filtered to only include checkout items written by the American author "John Green".)
   
 > What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
 
 - The parameters of the data are listed below:
-  - UsageClass (whether a check out was digital or physical)
+  - UsageClass (whether the check out was digital or physical)
   - CheckoutType (the vendor tool used for the check out)
   - MaterialType (the medium of the check out)
   - CheckoutYear
   - CheckoutMonth    
   - Checkouts (number of check outs of the item)
-  -Title (of the item check out)
-  -ISBN
+  - Title (of the item checked out)
+  - ISBN
   - Creator
-  - Subjects (genres of the item)
+  - Subjects (a list of genres of the item)
   - Publisher
   - PublicationYear
   
 > How was the data collected or generated?  
 
-- The digital check out data was collected through the Seattle Public Library's vendors (who are Overdrive, hoopla, Freegal, and RBDigital). Data on physical check outs was collected from the Legrady artwork data archives from 2005 to 2016 and from the Horizon ILS since 2016.
+- The digital checkout data was collected through the Seattle Public Library's vendors (who are Overdrive, hoopla, Freegal, and RBDigital). Data on physical checkouts was collected from the Legrady artwork data archives from 2005 to 2016 and from the Horizon ILS since 2016.
 
 > Why was the data collected?  
 
-- According to Seattle's Open Data website, data is published by the city's departments and put into their Open Data program. This Open Data program was created to make data collected by Seattle to be easily accessible to the public. They wanted the availability of the data to increase Seattle's quality of life and promote a supportive and beneficial community to its residents that is constantly finding ways to self-improve.
+- According to Seattle's Open Data website, data is published by the city's departments and put into their Open Data program. This Open Data program was created so that the data collected by Seattle was easily accessible to the public. They wanted the availability of the data to increase Seattle's quality of life and promote a supportive and beneficial community to its residents. The program wanted the data to be used towards its goal of constant self-improvement.
 
 > What, if any, ethical questions do you need to consider when working with this data? 
 
-- One ethical question to consider is how the Seattle Public Library alerted its users that their data was being collected. Although the data remains anonymous, users of the library may not be comfortable with their check out information being collected as the items' subjects can read into the users' personal interests or political beliefs. Considering how many websites force a user to accept their terms and conditions in order to use the website, the library may follow a similar policy for users to check out items. This means that for users who require the use of the library's items, they would be forced into having their data being collected.
+- One ethical question to consider is how the Seattle Public Library alerted its users that their data was being collected. Although the data remains anonymous, users of the library may not be comfortable with their check out information being collected as the items' subjects can read into the users' personal interests or political beliefs. Considering how many websites force a user to accept their terms and conditions in order to use the website, the library may follow a similar policy for users to check out items. This means that for users who require the use of the library's items, they would be forced to share their data in order to access the library's resources.
 
 > What are possible limitations or problems with this data?
 
 - One limitation of the data is that it does not record renewal check outs and only records the initial check out. This means that the data is likely to have underestimated the number of total check outs per month as it is common for users to extend their time limit. 
 
-- Another problem of the data is that it is messy due to its variation in sources. The different sources used by the data means that information may have been collected using different methods or different types of data were collected. For example, the source for the physical check outs changed during 2016, so some entries have blank fields meaning the data is inconsistent depending on what time frame is being viewed. Furthermore, the original dataset is messy as some of the entries use unreadable characters, which may have resulted when the data was transferred from archives or media vendors. The format of the entries also differs (such as when looking at the Publication Year column) which can make filtering for a certain data value difficult. This also includes book titles that are written with or without a "The" (such as "The Fault in Our Stars") and titles written in English or Spanish.
+- Another problem of the data is that it is very messy due to its variation in sources. The different sources used to collect the data means that different types of information may have been collected or different methods were used to do so. For example, the source for the physical checkouts changed during 2016, so some entries have blank fields meaning the data is inconsistent depending on what time frame is being viewed. Furthermore, the original dataset is messy as some of the entries use unreadable characters and the format of data entries differs. This can be seen when looking at the "PublicationYear" column which can make filtering for a certain data value difficult. This also includes book titles that are written in English or Spanish or written with different capitalized letters (such as "unabridged" versus "Unabridged").
 
-- A third problem relates to the Subjects column. The subject of each entry is a string of subjects. This means that each subject entry does not pertain to one unique subject. For example, when looking at the subjects for the book titled "An Abundance of Katherines" and comparing it to "Paper Towns", the entire subject entry itself is different. However, it is only after actually reading each subject that we are able to find that both books share Young Adult Fiction as a subject. 
+- A third problem relates to the Subjects column. The subject of each entry is a string of subjects. This means that each subject entry does not pertain to one unique subject. For example, when looking at the subjects for the book titled "An Abundance of Katherines" and comparing it to "Paper Towns", the entire subject entry itself is different. However, after taking a closer look at each subject in the list, we are able to find that both books share Young Adult Fiction as a subject. 
 
 - Lastly, in my filtered dataset, the creator is filtered to "John Green", but this doesn't mean that all creators are the same person. This means that creators who share the same name are included in this dataset, so I need to further clean the data to only include items created by the American author John Green. 
+
+- In order to limit these issues in my custom dataframe, I first went filtered the "Title" column in alphabetical order to check if each item was written by the American author John Green or not. If the item was written by a different author, I deleted the entry. Next, I viewed the titles to eliminate any errors due to capitalization errors in the word "unabridged". If the "UsageClass", "CheckoutType", "MaterialType", "Publisher", and "PublicationYear" were the same, then I changed any lowercase "unabridged" words to "Unabridged". As explained in the summary information section, I did not combine the same works together (such as combining all works of "The Fault in Our Stars" because the different in title entries were due to a difference in matieral type, publisher, or language. Lastly, I did not use the ISBN column when using my custom dataset because it contained a significantly large amount of "NA" values. 
 
 THINGS TO THINK ABOUT WHEN USING DATA:
 - Subjects, need to use string detect

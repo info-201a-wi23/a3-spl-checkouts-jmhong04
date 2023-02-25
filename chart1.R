@@ -12,7 +12,7 @@ engl_titles <- c("An Abundance of Katherines", "Let It Snow: Three Holiday Roman
 jgdf_chart1 <- jg_df %>%
   filter(Title %in% engl_titles)
 
-# create line plot of Year v.
+# create line plot of Year v. Number of Checkouts for John Green's English e-books
 ggplot(data = jgdf_chart1) +
   geom_line(mapping = aes(
     x = CheckoutYear,
@@ -21,7 +21,7 @@ ggplot(data = jgdf_chart1) +
   )) +
   labs(
     title = "Number of Checkouts Overtime for John Green's Ebooks (English versions)",
-    x = "Year Ebook was Checked Out",
+    x = "Year of Ebook Checkout",
     y = "Number of Checkouts",
     color = "Title of Ebook"
   )

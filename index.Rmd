@@ -1,9 +1,11 @@
 ---
-title: "A3: SPL Library Checkouts"
-output: html_document
+title: 'A3: SPL Library Checkouts'
+output:
+  html_document: default
+  pdf_document: default
 ---
 ```{r, echo = FALSE}
-jg_df <- read.csv("John_Green_Checkouts.csv", stringsAsFactors = FALSE)
+jg_df <- read.csv("ALL_JG_BOOKS.csv", stringsAsFactors = FALSE)
 ```
 
 ### Introduction
@@ -11,7 +13,7 @@ Using the Seattle Public Library data, I chose to analyze the books by John Gree
 
 - *How popular has John Green's books been from 2007 to 2023?*
 
-In order to do so, I will focus on the **Checkouts**, **Title**, **Subjects**, **CheckoutYear**, **CheckoutMonth**, **Publisher**, and **MaterialType** when calculating summary statistics. In addition to these variables, I will also be using the **Publisher Year** when creating data visualizations to analyze the following trends:
+In order to do so, I will focus on the **Checkouts**, **Title**, **Subjects**, **CheckoutYear**, **CheckoutMonth**, **Publisher**, and **MaterialType** when calculating summary statistics and creating data visualizations to analyze the following trends:
 
 MAY NEED TO FIX THESE!!!! :
 - *How have the most checked out books written by John Green changed overtime?*
@@ -33,7 +35,8 @@ As for the publishing company, I found that the most checkouts of books written 
 
 > Who collected/published the data?  
 
-- The Seattle Public Library created and published the data. (My custom dataframe uses this data, but it is filtered to only include checkout items written by the American author "John Green".)
+- Before 2017, George Legrady collected the checkout data since 2005 to use for his piece of artwork called "Making the Invisible Visible". The Seattle Public Library then began data collection in 2017 and combined their data with Legrady's data in order to publish everything to the Open Data program.
+- My custom dataframe uses this data, but it is filtered to only include checkout items written by the American author John Green.
   
 > What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
 
@@ -58,22 +61,23 @@ As for the publishing company, I found that the most checkouts of books written 
 > Why was the data collected?  
 
 - According to Seattle's Open Data website, data is published by the city's departments and put into their Open Data program. This Open Data program was created so that the data collected by Seattle was easily accessible to the public. They wanted the availability of the data to increase Seattle's quality of life and promote a supportive and beneficial community to its residents. The program wanted the data to be used towards its goal of constant self-improvement.
+- Before this, George Legrady collected the checkout data to create his artwork that displays summarized and recent data of the library's checkouts.
 
 > What, if any, ethical questions do you need to consider when working with this data? 
 
-- One ethical question to consider is how the Seattle Public Library alerted its users that their data was being collected. Although the data remains anonymous, users of the library may not be comfortable with their check out information being collected as the items' subjects can read into the users' personal interests or political beliefs. Considering how many websites force a user to accept their terms and conditions in order to use the website, the library may follow a similar policy for users to check out items. This means that for users who require the use of the library's items, they would be forced to share their data in order to access the library's resources.
+- One ethical question to consider is how the Seattle Public Library alerted its users that their data was being collected. The [article](https://shelftalkblog.wordpress.com/2022/12/06/how-a-digital-artwork-helped-the-seattle-public-library-lead-in-book-data/) that explains how the SPL checkout data came to be claims that Legrady's data did not collect any information on its users but does not specify further. Although the data remains anonymous, users of the library may not be comfortable with any of their check out information being collected as the items' subjects can read into the users' personal interests or political beliefs. Considering how many websites force a user to accept their terms and conditions in order to use the website, the library may follow a similar policy for users to check out items. This means that for users who require the use of the library's items, they would be forced to share their data in order to access the library's resources.
 
 > What are possible limitations or problems with this data?
 
 - One limitation of the data is that it does not record renewal check outs and only records the initial check out. This means that the data is likely to have underestimated the number of total check outs per month as it is common for users to extend their time limit. 
 
-- Another problem of the data is that it is very messy due to its variation in sources. The different sources used to collect the data means that different types of information may have been collected or different methods were used to do so. For example, the source for the physical checkouts changed during 2016, so some entries have blank fields meaning the data is inconsistent depending on what time frame is being viewed. Furthermore, the original dataset is messy as some of the entries use unreadable characters and the format of data entries differs. This can be seen when looking at the "PublicationYear" column which can make filtering for a certain data value difficult. This also includes book titles that are written in English or Spanish or written with different capitalized letters (such as "unabridged" versus "Unabridged").
+- Another problem of the data is that it is very messy due to its variation in sources. The different sources used to collect the data means that different types of information may have been collected using different methods. For example, the source for the physical checkouts changed during 2016, so some entries have blank fields meaning the data is inconsistent depending on what time frame is being viewed. Furthermore, the original dataset is messy as some of the entries use unreadable characters and the format of data entries differs. This can be seen when looking at the "PublicationYear" column which can make filtering for a certain data value difficult. This also includes book titles that are written in English or Spanish or written with different capitalized letters (such as "unabridged" versus "Unabridged").
 
 - A third problem relates to the Subjects column. The subject of each entry is a string of subjects. This means that each subject entry does not pertain to one unique subject. For example, when looking at the subjects for the book titled "An Abundance of Katherines" and comparing it to "Paper Towns", the entire subject entry itself is different. However, after taking a closer look at each subject in the list, we are able to find that both books share Young Adult Fiction as a subject. 
 
 - Lastly, in my filtered dataset, the creator is filtered to "John Green", but this doesn't mean that all creators are the same person. This means that creators who share the same name are included in this dataset, so I need to further clean the data to only include items created by the American author John Green. 
 
-- In order to limit these issues in my custom dataframe, I first went filtered the "Title" column in alphabetical order to check if each item was written by the American author John Green or not. If the item was written by a different author, I deleted the entry. Next, I viewed the titles to eliminate any errors due to capitalization errors in the word "unabridged". If the "UsageClass", "CheckoutType", "MaterialType", "Publisher", and "PublicationYear" were the same, then I changed any lowercase "unabridged" words to "Unabridged". As explained in the summary information section, I did not combine the same works together (such as combining all works of "The Fault in Our Stars" because the different in title entries were due to a difference in matieral type, publisher, or language. Lastly, I did not use the ISBN column when using my custom dataset because it contained a significantly large amount of "NA" values. 
+- In order to limit these issues in my custom dataframe, I applied multiple filters to the "Creator" column in order to obtain as many rows as possible that include the name "John Green". Then, I went through the "Title" column in alphabetical order to check if each item was written by the American author John Green or written in a different language. I omitted any data entries that were not written in English or written by a different author. As explained in the summary information section, I did not combine the same works together (such as combining all works of "The Fault in Our Stars" because the different in title entries were due to a difference in material type. Lastly, I did not use the ISBN column when using my custom dataset because it contained a significantly large amount of "NA" values. 
 
 THINGS TO THINK ABOUT WHEN USING DATA:
 - Subjects, need to use string detect

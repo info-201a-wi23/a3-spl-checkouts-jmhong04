@@ -82,27 +82,24 @@ THINGS TO THINK ABOUT WHEN USING DATA:
 - The dataset is each item checked out per month, so repeated titles
 
 ### First Trends Over Time Chart
-```{r, echo = FALSE, warning = FALSE, code = readLines("chart1.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("chart1.R")}
 ```
 
 I included a chart that shows the trends of the number of checkouts of the English ebooks written by John Green between 2008 and 2023. I wanted to visualize how popular John Green's books were overtime, so I decided to do so by analyzing the number of checkouts for each ebook by month and year. I chose to only visualize ebooks because this material was more common than the audiobooks, and there were only ebooks and audiobooks in list of materials. I also only chose the English versions because I didn't want to combine the same titles in English and Spanish in case language plays a factor in popularity. The chart reveals that "The Fault in Our Stars" had the greatest peak in checkouts around 2014. Although not as great, "Turtles All the Way Down" also experienced significant peak in checkouts from 2016 to 2020. The annual total number of checkouts for John Green's English ebooks has never exceeded 250 checkouts. Also, seeing as how the peaks have declined overtime, John Green's English ebooks don't seem to be as popular as they were in the early to mid 2010's. 
 
 ### Second Trends Over Time Chart
-```{r, echo = FALSE, code = readLines("chart2.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("chart2.R")}
 ```
 
 This line plot shows how the material of the checkout (for works by John Green) have changed over time. I wanted to understand the popularity of each material type throughout the years as the material of a book is a potential factor to an author's popularity. For instance, if an author publishes more works as a physical book when more readers prefer ebooks, then the author's popularity could decrease. This line plot shows that the number of ebook Checkouts has been greater than the number of audiobook checkouts on average for John Green's works. However, it also shows the general decline in ebook checkouts and the rise in audiobook checkouts. This suggests that more customers are interested in audiobooks, so John Green may want to consider in publishing more audiobook stories to increase his popularity and success. 
 
+### Stacked Bar Plot
+```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("chart3.R")}
+```
 
-### Your Choice
+This bar plot shows the annual checkout totals for "The Fault in Our Stars". From the first chart, "The Fault in Our Stars" seemed to be when John Green's popularity dramatically peaked, so I wanted to further analyze the checkout trends of this story specifically. The bar plot includes both the English and Spanish versions of the book because I wanted to analyze the book's popularity regardless of language. I also created stacked bars based on material type because I wanted to see how the proportion of audiobook checkouts to ebook checkouts changed over time. It's also important to note that the English and Spanish audiobooks were published after the English ebook version was published which explains why there are no audiobook checkouts from 2013 to 2016.
 
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
-
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-Here's an example of how to run an R script inside an RMarkdown file:
+The bar plot reveals that specifically for "The Fault in Our Stars", the book's popularity peaked at more than 2000 checkouts in 2014 but decreased significantly afterwards. On average, the checkouts for ebooks are much greater than the checkouts for audiobooks. However, the proportion of audiobook checkouts has increased from 2017 to January 2023. This can be seen in the 2022 bar in which the audiobook checkouts make up half of the total checkouts for 2022. 
 
 
 

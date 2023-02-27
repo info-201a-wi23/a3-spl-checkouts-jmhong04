@@ -2,7 +2,7 @@ library(openintro)
 library(tidyverse)
 
 # load the data
-jg_df <- read.csv("ALL_JG_BOOKS.csv", stringsAsFactors = FALSE)
+jg_df <- read.csv("John_Green_Checkouts.csv", stringsAsFactors = FALSE)
 
 # In the SPL, what item written by John Green has the highest number of checkouts?
 item_most_checkouts <- jg_df %>%

@@ -5,30 +5,28 @@ library(openintro)
 
 jg_df <- read.csv("John_Green_Checkouts.csv", stringsAsFactors = FALSE)
 
-# create a variable of only Ebooks with English titles
-engl_titles <- c("An Abundance of Katherines", "Let It Snow: Three Holiday Romances", "Looking for Alaska", "Paper Towns", "The Anthropocene Reviewed: Essays on a Human-Centered Planet", "The Fault in Our Stars", "Turtles All the Way Down", "Will Grayson, Will Grayson")
-
-# create new dataframe and with a new date column
+# filter this new dataframe to books by John Green and find the sum checkouts for each month of each year for each book
 jgdf_chart1 <- jg_df %>%
-  mutate(date  = paste0(CheckoutYear, "-", CheckoutMonth,  "-01" ))
+  filter(MaterialType == "BOOK", na.rm = TRUE) %>%
+  mutate(
+    Title = str_remove(Title, "\\/.*"),
+    Title = str_remove(Title, "\\[.*"),
+    Title = str_to_title(Title)
+  ) %>%
+  group_by(CheckoutYear, Title) %>%
+  summarize(sum_checkouts_by_book = sum(Checkouts, na.rm = TRUE))
 
-jgdf_chart1$date <- as.Date(jgdf_chart1$date, format = "%Y-%m-%d")
-
-# filter this new dataframe to English titles and find the sum checkouts for each month of each year
-jgdf_chart1 <- jgdf_chart1 %>% 
-  filter(Title %in% engl_titles, na.rm = TRUE) %>% 
-  group_by(Title, date) %>% 
-  summarize(sum_checkouts = sum(Checkouts, na.rm = TRUE))
-
-# create line plot of Date v. Number of Checkouts for John Green's English e-books
+# create line plot of Year v. Number of Checkouts for John Green's Books
 ggplot(data = jgdf_chart1) +
   geom_line(mapping = aes(
-    x = date,
-    y = sum_checkouts,
+    x = CheckoutYear,
+    y = sum_checkouts_by_book,
     color = Title
   )) +
   labs(
-    title = "Total Checkouts per Month for John Green's Ebooks (English versions)",
-    x = "Date of Ebook Checkout",
+    title = "Total Checkouts per Year for Each John Green Book in the SPL",
+    x = "Year of Book Checkout",
     y = "Number of Checkouts",
-    color = "Title of Ebook")
+    color = "Title of Book"
+  ) +
+  scale_x_continuous(breaks = seq(2005, 2023, 2))

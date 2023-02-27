@@ -5,19 +5,19 @@ output:
   pdf_document: default
 ---
 ```{r, echo = FALSE}
-jg_df <- read.csv("ALL_JG_BOOKS.csv", stringsAsFactors = FALSE)
+jg_df <- read.csv("John_Green_Checkouts.csv", stringsAsFactors = FALSE)
 ```
 
 ### Introduction
 Using the Seattle Public Library data, I chose to analyze the books by John Green that were checked out in Seattle. I chose this author because he was very popular when I was younger, and I wanted to understand how popular his books have been recently. I was also curious about whether certain factors related to the level of popularity of his books. This leads me to my main research question:
 
-- *How popular has John Green's books been from 2007 to 2023?*
+- *How popular has works written by John Green been from 2005 to 2023?*
 
-In order to do so, I will focus on the **Checkouts**, **Title**, **CheckoutYear**, **CheckoutMonth**, **Publisher**, and **MaterialType** when calculating summary statistics and creating data visualizations. I will not use the "Subjects" column because many of John Green's books fall under the same genres, and any unique genres tend to fall only under one book title. I will not be using the "PublicationYear" column due to the large variation in format. Using my selected variables, I will analyze the following trends:
+In order to do so, I will focus on the **Checkouts**, **Title**, **CheckoutYear**, **CheckoutMonth**, and **MaterialType** when calculating summary statistics and creating data visualizations. I will not use the "Subjects" column because many of John Green's books fall under the same genres, and any unique genres tend to fall only under one story title. I will not be using the "PublicationYear" column due to the large variation in format. Using my selected variables, I will analyze the following trends:
 
-- *How have the most checked out books written by John Green changed overtime?*
-- *How have the most common materials checked out for John Green's books changed overtime?*
-- *How has the checkouts of "The Fault in Our Stars" changed over time?*
+- *How have the most checked out stories written by John Green changed overtime?*
+- *How have the materials of the most checked out items written by John Green's changed overtime?*
+- *How has the checkouts of John Green's most popular story and material changed over time?*
 
 ### Summary Information
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("summary.R")}
@@ -74,13 +74,13 @@ As for type of material, John Green's book checkouts were most checked out as a 
 
 - Lastly, in my filtered dataset, the creator is filtered to "John Green", but this doesn't mean that all creators are the same person. This means that creators who share the same name are included in this dataset, so I need to further clean the data to only include items created by the American author John Green. 
 
-- In order to limit these issues in my custom dataframe, I applied multiple filters to the "Creator" column in order to obtain as many rows as possible that include the name "John Green". Then, I went through the "Title" column in alphabetical order to check if each item was written by the American author John Green or written in a different language. I omitted any data entries that were not written in English or written by a different author. As explained in the summary information section, I did not combine the same works together (such as combining all works of "The Fault in Our Stars" because the different in title entries were due to a difference in material type. Lastly, I did not use the ISBN column when using my custom dataset because it contained a significantly large amount of "NA" values. 
+- In order to limit these issues in my custom dataframe, I applied multiple filters to the "Creator" column in order to obtain as many rows as possible that include the name "John Green". Then, I went through the "Title" column in alphabetical order to check if each item was written by the American author John Green or written in a different language. I omitted any data entries that were not written in English or written by a different author. As explained in the summary information section, I did not combine the same works together (such as combining all works of "The Fault in Our Stars" because the different in title entries were due to a difference in material type. Lastly, I did not use the ISBN column when using my custom dataset because it contained a significantly large amount of "NA" values. In the "MaterialType" column, there is an entry labeled "REGPRINT", which I cannot find the meaning of in the Seattle Open Data Program website. To not make assumptions, I will not use "REGPRINT" when filtering the "MaterialType" column.
 
 ### First Trends Over Time Chart
-```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("chart1.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("chart1.R"), fig.dim = c(12, 6)}
 ```
 
-I included a chart that shows the trends of the number of checkouts of the English ebooks written by John Green between 2008 and 2023. I wanted to visualize how popular John Green's books were overtime, so I decided to do so by analyzing the number of checkouts for each ebook by month and year. I chose to only visualize ebooks because this material was more common than the audiobooks, and there were only ebooks and audiobooks in list of materials. I also only chose the English versions because I didn't want to combine the same titles in English and Spanish in case language plays a factor in popularity. The chart reveals that "The Fault in Our Stars" had the greatest peak in checkouts around 2014. Although not as great, "Turtles All the Way Down" also experienced significant peak in checkouts from 2016 to 2020. The annual total number of checkouts for John Green's English ebooks has never exceeded 250 checkouts. Also, seeing as how the peaks have declined overtime, John Green's English ebooks don't seem to be as popular as they were in the early to mid 2010's. 
+Here is a line graph that shows the trends of the number of checkouts of the books written by John Green between 2005 and 2023. I wanted to visualize how popular John Green's books were overtime, so I decided to do so by analyzing the number of checkouts for each book by year. I chose to only visualize books because I found from my summary statistics that books were the most popular material type among checkouts from John Green's works. I renamed the titles to fall under one title per unique story because I wanted a total checkout number per story rather than physical/digital item. The chart reveals that "The Fault in Our Stars" had the greatest peak in checkouts during 2014. Although not as great, the other books has a peak number of checkouts between 2012 and 2016, but the number of checkouts have decreased since then. The annual total number of checkouts for John Green's English books has never exceeded 2000 checkouts. Also, seeing as how the number of checkouts have declined overtime, John Green's English books don't seem to be as popular as they were in prior years.
 
 ### Second Trends Over Time Chart
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("chart2.R")}

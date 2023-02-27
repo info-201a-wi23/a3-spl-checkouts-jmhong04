@@ -7,6 +7,7 @@ output:
 ```{r, echo = FALSE}
 jg_df <- read.csv("John_Green_Checkouts.csv", stringsAsFactors = FALSE)
 ```
+#### *By Jackie Hong*
 
 ### Introduction
 Using the Seattle Public Library data, I chose to analyze the books by John Green that were checked out in Seattle. I chose this author because he was very popular when I was younger, and I wanted to understand how popular his books have been recently. I was also curious about whether certain factors related to the level of popularity of his books. This leads me to my main research question:

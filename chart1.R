@@ -5,7 +5,7 @@ library(openintro)
 
 jg_df <- read.csv("John_Green_Checkouts.csv", stringsAsFactors = FALSE)
 
-# filter this new dataframe to books by John Green and find the sum checkouts for each month of each year for each book
+# filter a new dataframe to books by John Green and find the sum checkouts for each year for each book
 jgdf_chart1 <- jg_df %>%
   filter(MaterialType == "BOOK", na.rm = TRUE) %>%
   mutate(

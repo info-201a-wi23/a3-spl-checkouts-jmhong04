@@ -12,13 +12,13 @@ jgdf_chart3 <- jg_df %>%
 
 jgdf_chart3$date <- as.Date(jgdf_chart3$date, format = "%Y-%m-%d")
 
-# filter this new dataframe to checkouts 2020 to present and find the sum checkouts for each month of each year
+# filter this new dataframe to "The Fault in Our Stars" checkouts from 2020 to 2023 and find the sum checkouts for each year
 jgdf_chart3 <- jgdf_chart3 %>%
   filter(str_detect(Title, "(?i)stars") & date >= "2020-01-01", na.rm = TRUE) %>%
-  group_by(MaterialType, CheckoutYear) %>%
+  group_by(CheckoutYear, MaterialType) %>%
   summarize(sum_checkout = sum(Checkouts, na.rm = TRUE))
 
-# create line plot of Date v. Number of Checkouts for John Green's English e-books
+# create a stacked bar chart of Year v. Proportion of Checkouts for John Green's English works
 ggplot(data = jgdf_chart3) +
   geom_col(
     mapping = aes(
@@ -29,7 +29,7 @@ ggplot(data = jgdf_chart3) +
   ) +
   scale_fill_brewer(palette = "PiYG") +
   labs(
-    title = 'Total Checkouts per Month for "The Fault in Our Stars"',
+    title = 'Annual Proportion of Checkouts by Material Type for "The Fault in Our Stars"',
     x = "Year of Checkout",
     y = "Proportion of Checkouts"
   )

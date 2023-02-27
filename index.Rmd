@@ -92,9 +92,11 @@ Here is another line plot showing how the material of the checkout (for works by
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("chart3.R")}
 ```
 
-This bar plot shows the annual checkout totals for "The Fault in Our Stars". From the first chart, "The Fault in Our Stars" seemed to be when John Green's popularity dramatically peaked, so I wanted to further analyze the checkout trends of this story specifically. The bar plot includes both the English and Spanish versions of the book because I wanted to analyze the book's popularity regardless of language. I also created stacked bars based on material type because I wanted to see how the proportion of audiobook checkouts to ebook checkouts changed over time. It's also important to note that the English and Spanish audiobooks were published after the English ebook version was published which explains why there are no audiobook checkouts from 2013 to 2016.
+This stacked bar plot shows a proportion of annual checkout totals for "The Fault in Our Stars" from 2020 to 2023. The proportion is the annual checkout total for each material type divided by the total checkouts that year.
 
-The bar plot reveals that specifically for "The Fault in Our Stars", the book's popularity peaked at more than 2000 checkouts in 2014 but decreased significantly afterwards. On average, the checkouts for ebooks are much greater than the checkouts for audiobooks. However, the proportion of audiobook checkouts has increased from 2017 to January 2023. This can be seen in the 2022 bar in which the audiobook checkouts make up half of the total checkouts for 2022. 
+From the Chart 1, "The Fault in Our Stars" appeared to be when John Green's popularity dramatically peaked, so I wanted to further analyze the checkout trends of this story in recent years. More specifically, I wanted to see how the proportion of certain materials checked out changed over time, so I created stacked bars based on material type. It's also important to note that the audiobook for "The Fault in Our Stars" in this dataset was published after the other materials which explains why there are no audiobook checkouts from January 2020 to March 2022. 
+
+The stacked bar plot reveals that specifically for "The Fault in Our Stars", the audiobooks increased in popularity since they were released in 2022. On average, the checkouts for ebooks are much greater than the checkouts for other materials, and the sound discs make up a very small proportion of annual checkouts frorm 2020 to 2022. The proportion of book checkouts has also decreased since 2020.
 
 
 

@@ -13,23 +13,20 @@ Using the Seattle Public Library data, I chose to analyze the books by John Gree
 
 - *How popular has John Green's books been from 2007 to 2023?*
 
-In order to do so, I will focus on the **Checkouts**, **Title**, **Subjects**, **CheckoutYear**, **CheckoutMonth**, **Publisher**, and **MaterialType** when calculating summary statistics and creating data visualizations to analyze the following trends:
+In order to do so, I will focus on the **Checkouts**, **Title**, **CheckoutYear**, **CheckoutMonth**, **Publisher**, and **MaterialType** when calculating summary statistics and creating data visualizations. I will not use the "Subjects" column because many of John Green's books fall under the same genres, and any unique genres tend to fall only under one book title. I will not be using the "PublicationYear" column due to the large variation in format. Using my selected variables, I will analyze the following trends:
 
-MAY NEED TO FIX THESE!!!! :
 - *How have the most checked out books written by John Green changed overtime?*
-- *How does the number of John Green's books that were published correlate to the number of John Green's books that were checked out overtime?*
-- *How has the popularity of John Green's books' genres changed overtime?*
+- *How have the most common materials checked out for John Green's books changed overtime?*
+- *How has the checkouts of "The Fault in Our Stars" changed over time?*
 
 ### Summary Information
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("summary.R")}
 ```
-In order to assess John Green's popularity throughout the years and factors that may be associated with his popularity, I calculated summary statistics that use the variables specified in the introduction. First, I wanted to know which piece of work written by John Green was the most popular, which I found by pulling the title of the item with the most amount of checkouts. I found that the title of the item written by John Green with the most number of checkouts in Seattle from 2007 to 2023 was `r item_most_checkouts`. I purposefully did not combine items with the same title written in a format because these differences in format are due to differences in the item's language, material type, or publisher which can potentially impact how often an item is checked out. (For instance, John Green's book called "An Abundance of Katherines" can also be found in the dataframe under the title "An Abundance of Katherines (Unabridged)", "El teorema Katherine: An Abundance of Katherines", or "El teorema Katherine". These differences occurred because the material type is an audiobook instead of an ebook, written in Spanish, or published by a different company.) 
+In order to assess John Green's popularity throughout the years and factors that may be associated with his popularity, I calculated summary statistics that use the variables specified in the introduction. First, I wanted to know which piece of work written by John Green was the most popular, which I found by pulling the title of the item with the most amount of checkouts. I found that the item in the Seattle Public Library written by John Green with the most number of checkouts was "`r item_most_checkouts`". For this statistic, I purposefully did not combine items with a similar book title because these differences in title formats are due to differences in the item's material type which can potentially impact how often an item is checked out. (For instance, John Green's book called "An Abundance of Katherines" can also be found in the dataframe under the title "An Abundance of Katherines (Unabridged)" because the two are different types of mediums.) 
 
-Then, I wanted to understand if other factors impacted John Green's popularity in the Seattle Public Library. I did so by calculating how often an item was checked out based on factors such as the subjects of the book, the date of the check out, the publishing company, and the medium of the item. First, I found the genres of the item that was most checked out by calculating the number of checkouts per unique group of subjects. The item with the most checkouts has the following group of subjects: `r subjects_most_checkouts`. 
+Then, I wanted to understand if other factors impacted John Green's popularity in the Seattle Public Library. I did so by calculating how often an item was checked out based on factors such as the date of the check out and the medium of the item. First, to assess the time period when John Green's books were most popular, I calculated the month and year when the most John Green books were checked out to be `r date_most_checkouts`. To see if annual holidays or events impacted the popularity of John Green's books, I calculated the month (regardless of year) with the most amount of checkouts. I found this month to be `r month_highest_checkouts`.
 
-Regarding the time period when John Green's books were most popular, I calculated the month and year when the most John Green books were checked out to be `r date_most_checkouts`. To see if annual holidays or events impacted the popularity of John Green's books, I calculated the month (regardless of year) with the most amount of checkouts. I found this month to be `r month_highest_checkouts`.
-
-As for the publishing company, I found that the most checkouts of books written by John Green were published by `r publish_cmpny_most_checkouts`. Finally, John Green's book checkouts were least checked out as an `r medium_least_checkouts`.
+As for type of material, John Green's book checkouts were most checked out as a `r medium_most_checkouts`. Lastly, in order to determine if the material type changed the popularity of a story, I found the *book* with the most amount of checkouts, which was also "`r book_most_checkouts`". This tells me that the material did not impact the most popular story. When calculating this last statistic, I did change the format of the entry in the "Title" column to match the same story because all of the entries were the same type of medium. (For instance, the story "Looking for Alaska" was entered as "Looking for Alaska / John Green." and "Looking for Alaska / a novel by John Green." although both are books. These entries do have different publishers, but because publishers don't change the content of a story, I did not think the difference in publishers was relevant and grouped these titles under the same title.)
 
 ### The Dataset
 
@@ -78,12 +75,6 @@ As for the publishing company, I found that the most checkouts of books written 
 - Lastly, in my filtered dataset, the creator is filtered to "John Green", but this doesn't mean that all creators are the same person. This means that creators who share the same name are included in this dataset, so I need to further clean the data to only include items created by the American author John Green. 
 
 - In order to limit these issues in my custom dataframe, I applied multiple filters to the "Creator" column in order to obtain as many rows as possible that include the name "John Green". Then, I went through the "Title" column in alphabetical order to check if each item was written by the American author John Green or written in a different language. I omitted any data entries that were not written in English or written by a different author. As explained in the summary information section, I did not combine the same works together (such as combining all works of "The Fault in Our Stars" because the different in title entries were due to a difference in material type. Lastly, I did not use the ISBN column when using my custom dataset because it contained a significantly large amount of "NA" values. 
-
-THINGS TO THINK ABOUT WHEN USING DATA:
-- Subjects, need to use string detect
-- Title - format not same
-- Not all same John Green
-- The dataset is each item checked out per month, so repeated titles
 
 ### First Trends Over Time Chart
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, code = readLines("chart1.R")}

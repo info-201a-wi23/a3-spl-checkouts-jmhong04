@@ -366,16 +366,22 @@ books. This leads me to my main research question:</p>
 2023?</em></li>
 </ul>
 <p>In order to do so, I will focus on the <strong>Checkouts</strong>,
-<strong>Title</strong>, <strong>Subjects</strong>,
-<strong>CheckoutYear</strong>, <strong>CheckoutMonth</strong>,
-<strong>Publisher</strong>, and <strong>MaterialType</strong> when
-calculating summary statistics and creating data visualizations to
-analyze the following trends:</p>
-<p>MAY NEED TO FIX THESE!!!! : - <em>How have the most checked out books
-written by John Green changed overtime?</em> - <em>How does the number
-of John Green’s books that were published correlate to the number of
-John Green’s books that were checked out overtime?</em> - <em>How has
-the popularity of John Green’s books’ genres changed overtime?</em></p>
+<strong>Title</strong>, <strong>CheckoutYear</strong>,
+<strong>CheckoutMonth</strong>, <strong>Publisher</strong>, and
+<strong>MaterialType</strong> when calculating summary statistics and
+creating data visualizations. I will not use the “Subjects” column
+because many of John Green’s books fall under the same genres, and any
+unique genres tend to fall only under one book title. I will not be
+using the “PublicationYear” column due to the large variation in format.
+Using my selected variables, I will analyze the following trends:</p>
+<ul>
+<li><em>How have the most checked out books written by John Green
+changed overtime?</em></li>
+<li><em>How have the most common materials checked out for John Green’s
+books changed overtime?</em></li>
+<li><em>How has the checkouts of “The Fault in Our Stars” changed over
+time?</em></li>
+</ul>
 </div>
 <div id="summary-information" class="section level3">
 <h3>Summary Information</h3>
@@ -384,36 +390,38 @@ factors that may be associated with his popularity, I calculated summary
 statistics that use the variables specified in the introduction. First,
 I wanted to know which piece of work written by John Green was the most
 popular, which I found by pulling the title of the item with the most
-amount of checkouts. I found that the title of the item written by John
-Green with the most number of checkouts in Seattle from 2007 to 2023 was
-Turtles All the Way Down. I purposefully did not combine items with the
-same title written in a format because these differences in format are
-due to differences in the item’s language, material type, or publisher
-which can potentially impact how often an item is checked out. (For
-instance, John Green’s book called “An Abundance of Katherines” can also
-be found in the dataframe under the title “An Abundance of Katherines
-(Unabridged)”, “El teorema Katherine: An Abundance of Katherines”, or
-“El teorema Katherine”. These differences occurred because the material
-type is an audiobook instead of an ebook, written in Spanish, or
-published by a different company.)</p>
+amount of checkouts. I found that the item in the Seattle Public Library
+written by John Green with the most number of checkouts was “The Fault
+In Our Stars”. For this statistic, I purposefully did not combine items
+with a similar book title because these differences in title formats are
+due to differences in the item’s material type which can potentially
+impact how often an item is checked out. (For instance, John Green’s
+book called “An Abundance of Katherines” can also be found in the
+dataframe under the title “An Abundance of Katherines (Unabridged)”
+because the two are different types of mediums.)</p>
 <p>Then, I wanted to understand if other factors impacted John Green’s
 popularity in the Seattle Public Library. I did so by calculating how
-often an item was checked out based on factors such as the subjects of
-the book, the date of the check out, the publishing company, and the
-medium of the item. First, I found the genres of the item that was most
-checked out by calculating the number of checkouts per unique group of
-subjects. The item with the most checkouts has the following group of
-subjects: Young Adult Fiction, Young Adult Literature.</p>
-<p>Regarding the time period when John Green’s books were most popular,
-I calculated the month and year when the most John Green books were
-checked out to be 10/2014. To see if annual holidays or events impacted
-the popularity of John Green’s books, I calculated the month (regardless
-of year) with the most amount of checkouts. I found this month to be
-January.</p>
-<p>As for the publishing company, I found that the most checkouts of
-books written by John Green were published by Penguin Group (USA), Inc..
-Finally, John Green’s book checkouts were least checked out as an
-AUDIOBOOK.</p>
+often an item was checked out based on factors such as the date of the
+check out and the medium of the item. First, to assess the time period
+when John Green’s books were most popular, I calculated the month and
+year when the most John Green books were checked out to be December
+2017. To see if annual holidays or events impacted the popularity of
+John Green’s books, I calculated the month (regardless of year) with the
+most amount of checkouts. I found this month to be January.</p>
+<p>As for type of material, John Green’s book checkouts were most
+checked out as a book. Lastly, in order to determine if the material
+type changed the popularity of a story, I found the <em>book</em> with
+the most amount of checkouts, which was also “The Fault In Our Stars”.
+This tells me that the material did not impact the most popular story.
+When calculating this last statistic, I did change the format of the
+entry in the “Title” column to match the same story because all of the
+entries were the same type of medium. (For instance, the story “Looking
+for Alaska” was entered as “Looking for Alaska / John Green.” and
+“Looking for Alaska / a novel by John Green.” although both are books.
+These entries do have different publishers, but because publishers don’t
+change the content of a story, I did not think the difference in
+publishers was relevant and grouped these titles under the same
+title.)</p>
 </div>
 <div id="the-dataset" class="section level3">
 <h3>The Dataset</h3>
@@ -540,9 +548,6 @@ to a difference in material type. Lastly, I did not use the ISBN column
 when using my custom dataset because it contained a significantly large
 amount of “NA” values.</p></li>
 </ul>
-<p>THINGS TO THINK ABOUT WHEN USING DATA: - Subjects, need to use string
-detect - Title - format not same - Not all same John Green - The dataset
-is each item checked out per month, so repeated titles</p>
 </div>
 <div id="first-trends-over-time-chart" class="section level3">
 <h3>First Trends Over Time Chart</h3>

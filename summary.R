@@ -15,28 +15,6 @@ item_most_checkouts <- jg_df %>%
   ) %>%
   pull(Title)
 
-# What type of material is most checked out for items written by John Green?
-medium_most_checkouts <- jg_df %>%
-  mutate(MaterialType = tolower(MaterialType)) %>%
-  group_by(MaterialType) %>%
-  summarize(sum_checkouts_by_medium = sum(Checkouts, na.rm = TRUE)) %>%
-  filter(sum_checkouts_by_medium == max(sum_checkouts_by_medium, na.rm = TRUE)) %>%
-  pull(MaterialType)
-
-# Does the answer to the question above change when only looking at books?
-# a.k.a. Among all books, which book has the most amount of checkouts?
-book_most_checkouts <- jg_df %>%
-  filter(MaterialType == "BOOK", na.rm = TRUE) %>%
-  mutate(
-    Title = str_remove(Title, "\\/.*"),
-    Title = str_remove(Title, "\\[.*"),
-    Title = str_to_title(Title)
-  ) %>%
-  group_by(Title) %>%
-  summarize(sum_checkouts_by_book = sum(Checkouts, na.rm = TRUE)) %>%
-  filter(sum_checkouts_by_book == max(sum_checkouts_by_book, na.rm = TRUE)) %>%
-  pull(Title)
-
 # What year and month had the most amount of checkouts for John Green's works?
 date_most_checkouts <- jg_df %>%
   mutate(name_date = paste0(month.name[CheckoutMonth], " ", CheckoutYear)) %>%
@@ -52,3 +30,25 @@ month_highest_checkouts <- jg_df %>%
   summarize(sum_checkouts_by_month = sum(Checkouts, na.rm = TRUE)) %>%
   filter(sum_checkouts_by_month == max(sum_checkouts_by_month, na.rm = TRUE)) %>%
   pull(month_name)
+
+# What type of material is most checked out for items written by John Green?
+medium_most_checkouts <- jg_df %>%
+  mutate(MaterialType = tolower(MaterialType)) %>%
+  group_by(MaterialType) %>%
+  summarize(sum_checkouts_by_medium = sum(Checkouts, na.rm = TRUE)) %>%
+  filter(sum_checkouts_by_medium == max(sum_checkouts_by_medium, na.rm = TRUE)) %>%
+  pull(MaterialType)
+
+# Does the answer to the first question change when only looking at books?
+# a.k.a. Among all books, which book has the most amount of checkouts?
+book_most_checkouts <- jg_df %>%
+  filter(MaterialType == "BOOK", na.rm = TRUE) %>%
+  mutate(
+    Title = str_remove(Title, "\\/.*"),
+    Title = str_remove(Title, "\\[.*"),
+    Title = str_to_title(Title)
+  ) %>%
+  group_by(Title) %>%
+  summarize(sum_checkouts_by_book = sum(Checkouts, na.rm = TRUE)) %>%
+  filter(sum_checkouts_by_book == max(sum_checkouts_by_book, na.rm = TRUE)) %>%
+  pull(Title)
